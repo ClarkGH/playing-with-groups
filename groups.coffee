@@ -9,9 +9,6 @@ if Meteor.isClient
 
     # increment the counter when button is clicked
     Session.set "counter", Session.get("counter") + 1
-
-if Meteor.isServer
-  Meteor.startup ->
-
+  Template.addToGroup.events "click button": ->
 
 # code to run on server at startup
