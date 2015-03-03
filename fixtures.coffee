@@ -36,3 +36,17 @@ Meteor.startup ->
           Roles.addUsersToRoles id, user.roles, 'allFac'
           Roles.addUsersToRoles id, user.roles, 'facA'
           Roles.addUsersToRoles id, ["entry", "report"], 'facB'
+
+    if Residents.find().count() is 0
+      Residents.insert
+        name: "Jim"
+        facility: "facA"
+      Residents.insert
+        name: "jeff"
+        facility: "facB"
+      Residents.insert
+        name: "mary"
+        facility: "facA"
+      Residents.insert
+        name: "sally"
+        facility: "facB"

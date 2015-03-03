@@ -1,7 +1,7 @@
-@Groups = new Mongo.Collection 'groups'
+@Residents = new Mongo.collection 'residents'
 
 if Meteor.isServer
   Meteor.publish null, ->
     Meteor.roles.find({})
-  Meteor.publish 'groups', ->
-    Groups.find({})
+  Meteor.publish 'residents', ->
+    Residents.find({})
