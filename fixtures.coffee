@@ -1,4 +1,5 @@
 Meteor.startup ->
+
   if Meteor.isServer
     if Meteor.users.find().count() is 0
       users = [

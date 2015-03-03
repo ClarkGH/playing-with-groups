@@ -1,4 +1,4 @@
-@Residents = new Mongo.collection 'residents'
+@Residents = new Mongo.Collection 'residents'
 
 if Meteor.isServer
   Meteor.publish null, ->

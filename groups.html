@@ -7,6 +7,7 @@
 
   {{> hello}}
   {{> loginButtons}}
+  {{> residents}}
 
   {{#if isInRole 'admin,entry,report' 'allFac'}}
     {{>All}}
@@ -29,6 +30,14 @@
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="residents">
+  {{#each allResidents}}
+    <p>
+      {{name}}
+    </p>
+  {{/each}}
 </template>
 
 <template name="facA">
