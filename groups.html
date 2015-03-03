@@ -8,7 +8,7 @@
   {{> hello}}
   {{> loginButtons}}
 
-  {{#if isInRole 'admin,entry,report' 'facA,facB'}}
+  {{#if isInRole 'admin,entry,report' 'allFac'}}
     {{>All}}
 
   {{else}}
@@ -16,7 +16,7 @@
       {{>facA}}
 
     {{else}}
-      {{#if isInRole 'admin,entry,report' 'facA'}}
+      {{#if isInRole 'admin,entry,report' 'facB'}}
         {{>facB}}
 
       {{/if}}
@@ -60,13 +60,14 @@
 </template>
 
 <template name="All">
-  <h3>Only people with access to all facilities can see this</h3>
+  <h3>Only all facility personal can see this</h3>
 
   {{#if isInRole 'admin' 'facA'}}
     <p> only the admins in FacA can see this</p>
   {{/if}}
 
   {{#if isInRole 'admin' 'facB'}}
+  <!-- matt isn't an admin in Fac B -->
     <p> only the admins in FacB can see this</p>
   {{/if}}
 

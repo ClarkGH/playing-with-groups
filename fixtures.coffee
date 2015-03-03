@@ -33,5 +33,6 @@ Meteor.startup ->
         if user.name is "Forrest"
           Roles.addUsersToRoles id, user.roles, 'facB'
         if user.name is "Matt"
+          Roles.addUsersToRoles id, user.roles, 'allFac'
           Roles.addUsersToRoles id, user.roles, 'facA'
           Roles.addUsersToRoles id, ["entry", "report"], 'facB'
