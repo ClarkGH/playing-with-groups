@@ -28,10 +28,10 @@ Meteor.startup ->
           profile: {
             name: user.name
           }
-        if user.name === "Jennay"
+        if user.name is "Jennay"
           Roles.addUsersToRoles id, user.roles, 'FacA'
-        if user.name === "Forrest"
+        if user.name is "Forrest"
           Roles.addUsersToRoles id, user.roles, 'Facb'
-        if user.name === "Matt"
+        if user.name is "Matt"
           Roles.addUsersToRoles id, user.roles, 'FacA'
           Roles.addUsersToRoles id, ["entry", "report"], 'FacB'
