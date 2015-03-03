@@ -8,6 +8,22 @@
   {{> hello}}
   {{> loginButtons}}
 
+  {{#if isInRole 'admin,entry,report' 'FacA,FacB'}}
+    {{>All}}
+
+  {{else}}
+    {{#if isInRole 'admin,entry,report' 'FacA'}}
+      {{>FacA}}
+
+    {{else}}
+      {{#if isInRole 'admin,entry,report' 'FacA'}}
+        {{>FacB}}
+
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+
 </body>
 
 <template name="hello">
@@ -17,39 +33,54 @@
 
 <template name="FacA">
   <h3>Fac A can see this</h3>
-  {{#if isInRole 'admin'}}
+  {{#if isInRole 'admin' 'FacA'}}
     <p> only the admins can see this</p>
   {{/if}}
-  {{#if isInRole 'entry'}}
+  {{#if isInRole 'entry' 'FacA'}}
     <p> only people with entry permissions can see this</p>
   {{/if}}
-  {{#if isInRole 'report'}}
+  {{#if isInRole 'report' 'FacA'}}
     <p> only people with report abilities can see this</p>
   {{/if}}
 </template>
 
 <template name="FacB">
   <h3>Fac B can see this</h3>
-  {{#if isInRole 'admin'}}
+  {{#if isInRole 'admin' 'FacB'}}
     <p> only the admins can see this</p>
   {{/if}}
-  {{#if isInRole 'entry'}}
+  {{#if isInRole 'entry' 'FacB'}}
     <p> only people with entry permissions can see this</p>
   {{/if}}
-  {{#if isInRole 'report'}}
+  {{#if isInRole 'report' 'FacB'}}
     <p> only people with report abilities can see this</p>
   {{/if}}
 </template>
 
 <template name="All">
   <h3>Only people with access to all facilities can see this</h3>
-  {{#if isInRole 'admin'}}
-    <p> only the admins can see this</p>
+
+  {{#if isInRole 'admin' 'FacA'}}
+    <p> only the admins in FacA can see this</p>
   {{/if}}
-  {{#if isInRole 'entry'}}
-    <p> only people with entry permissions can see this</p>
+
+  {{#if isInRole 'admin' 'FacB'}}
+    <p> only the admins in FacB can see this</p>
   {{/if}}
-  {{#if isInRole 'report'}}
-    <p> only people with report abilities can see this</p>
+
+  {{#if isInRole 'entry' 'FacA'}}
+    <p> only people with entry permissions in FacA can see this</p>
+  {{/if}}
+
+  {{#if isInRole 'entry' 'FacB'}}
+    <p> only people with entry permissions in FacB can see this</p>
+  {{/if}}
+
+  {{#if isInRole 'report' 'FacA'}}
+    <p> only people with report abilities in FacA can see this</p>
+  {{/if}}
+
+  {{#if isInRole 'report' 'FacB'}}
+    <p> only people with report abilities in FacB can see this</p>
   {{/if}}
 </template>
