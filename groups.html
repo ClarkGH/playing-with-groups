@@ -7,7 +7,7 @@
 
   {{> hello}}
   {{> loginButtons}}
-  {{> addToGroup}}
+
 </body>
 
 <template name="hello">
@@ -15,8 +15,41 @@
   <p>You've pressed the button {{counter}} times.</p>
 </template>
 
-<template name="addToGroup">
-  <button class="add">
-    Add User to group "taco"
-  </button>
+<template name="FacA">
+  <h3>Fac A can see this</h3>
+  {{#if isInRole 'admin'}}
+    <p> only the admins can see this</p>
+  {{/if}}
+  {{#if isInRole 'entry'}}
+    <p> only people with entry permissions can see this</p>
+  {{/if}}
+  {{#if isInRole 'report'}}
+    <p> only people with report abilities can see this</p>
+  {{/if}}
+</template>
+
+<template name="FacB">
+  <h3>Fac B can see this</h3>
+  {{#if isInRole 'admin'}}
+    <p> only the admins can see this</p>
+  {{/if}}
+  {{#if isInRole 'entry'}}
+    <p> only people with entry permissions can see this</p>
+  {{/if}}
+  {{#if isInRole 'report'}}
+    <p> only people with report abilities can see this</p>
+  {{/if}}
+</template>
+
+<template name="All">
+  <h3>Only people with access to all facilities can see this</h3>
+  {{#if isInRole 'admin'}}
+    <p> only the admins can see this</p>
+  {{/if}}
+  {{#if isInRole 'entry'}}
+    <p> only people with entry permissions can see this</p>
+  {{/if}}
+  {{#if isInRole 'report'}}
+    <p> only people with report abilities can see this</p>
+  {{/if}}
 </template>
