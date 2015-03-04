@@ -77,11 +77,11 @@ Meteor.startup ->
         name: "Jim"
         unit: "unitA"
       Residents.insert
-        name: "jeff"
-        unit: "unitB"
-      Residents.insert
         name: "mary"
         unit: "unitA"
+      Residents.insert
+        name: "jeff"
+        unit: "unitB"
       Residents.insert
         name: "sally"
         unit: "unitB"

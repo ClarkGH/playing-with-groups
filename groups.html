@@ -6,6 +6,22 @@
   <h1>Welcome to Meteor!</h1>
 
   {{> loginButtons}}
+  {{> stuff}}
+
+
+</body>
+
+<template name="residents">
+  {{#each allResidents}}
+    <p>
+      name: {{name}}
+      <br>
+      unit: {{unit}}
+    </p>
+  {{/each}}
+</template>
+
+<template name="stuff">
   {{#if isInRole 'admin,entry,report' 'super'}}
     {{> residents}}
 
@@ -33,16 +49,4 @@
       </p>
     {{/if}}
   {{/if}}
-
-
-</body>
-
-<template name="residents">
-  {{#each allResidents}}
-    <p>
-      name: {{name}}
-      <br>
-      unit: {{unit}}
-    </p>
-  {{/each}}
 </template>

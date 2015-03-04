@@ -1,10 +1,15 @@
 if Meteor.isClient
   Meteor.subscribe('residents');
 
-  Template.residents.helpers
+  Template.stuff.helpers
     allResidents: ->
       Residents.find({})
     unitAResidents: ->
-      Residents.find({field: {unit: "unitA"} } )
+      console.log 'hi'
+      Residents.find( {unit: 'unitA' } )
+    unitBResidents: ->
+      Residents.find({unit: 'unitB' } )
+    unitCResidents: ->
+      Residents.find({unit: 'unitC' } )
 
 # code to run on server at startup
