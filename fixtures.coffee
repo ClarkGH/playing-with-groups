@@ -4,23 +4,41 @@ Meteor.startup ->
     if Meteor.users.find().count() is 0
       users = [
         {
-          name: "Jennay"
-          email: "jennay@gmail.com"
-          password: "jennay"
+          name: "User1"
+          email: "user1@gmail.com"
+          password: "foobar"
           roles: ["entry", "report"]
         },
         {
-          name: "Forrest"
-          email: "forrest@gmail.com"
-          password: "forrest"
+          name: "User2"
+          email: "user2@gmail.com"
+          password: "foobar"
           roles: ["entry", "report"]
         },
         {
-          name: "Matt"
-          email: "matt@gmail.com"
-          password: "matt"
+          name: "User3"
+          email: "user3@gmail.com"
+          password: "foobar"
+          roles: ["entry", "report"]
+        },
+        {
+          name: "User4"
+          email: "user4@gmail.com"
+          password: "foobar"
+          roles: ["entry", "report"]
+        },
+        {
+          name: "Admin1"
+          email: "admin1@gmail.com"
+          password: "foobar"
           roles: ["admin", "entry", "report"]
         },
+        {
+          name: "Admin2"
+          email: "admin2@gmail.com"
+          password: "foobar"
+          roles: ["admin", "entry", "report"]
+        }
       ]
       _.each users, (user) ->
         id = Accounts.createUser
@@ -29,25 +47,39 @@ Meteor.startup ->
           profile: {
             name: user.name
           }
-        if user.name is "Jennay"
-          Roles.addUsersToRoles id, user.roles, 'facA'
-        if user.name is "Forrest"
-          Roles.addUsersToRoles id, user.roles, 'facB'
-        if user.name is "Matt"
-          Roles.addUsersToRoles id, user.roles, 'allFac'
-          Roles.addUsersToRoles id, user.roles, 'facA'
-          Roles.addUsersToRoles id, ["entry", "report"], 'facB'
+        if user.name is "User1"
+          Roles.addUsersToRoles id, user.roles, 'UnitA'
+        if user.name is "User2"
+          Roles.addUsersToRoles id, user.roles, 'UnitB'
+        if user.name is "User3"
+          Roles.addUsersToRoles id, user.roles, 'UnitA'
+          Roles.addUsersToRoles id, user.roles, 'UnitB'
+          Roles.addUsersToRoles id, user.roles, 'UnitC'
+        if user.name is "User4"
+          Roles.addUsersToRoles id, user.roles, 'UnitC'
+
+        if user.name is "Admin1"
+          Roles.addUsersToRoles id, user.roles, 'UnitA'
+          Roles.addUsersToRoles id, ["entry", "report"], 'UnitB'
+        if user.name is "Admin2"
+          Roles.addUsersToRoles id, user.roles, 'UnitC'
 
     if Residents.find().count() is 0
       Residents.insert
         name: "Jim"
-        facility: "facA"
+        facility: "UnitA"
       Residents.insert
         name: "jeff"
-        facility: "facB"
+        facility: "UnitB"
       Residents.insert
         name: "mary"
-        facility: "facA"
+        facility: "UnitA"
       Residents.insert
         name: "sally"
-        facility: "facB"
+        facility: "UnitB"
+      Residents.insert
+        name: "biff"
+        facility: "UnitC"
+      Residents.insert
+        name: "marty"
+        facility: "UnitC"
