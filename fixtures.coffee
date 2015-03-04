@@ -39,6 +39,12 @@ Meteor.startup ->
           password: "foobar"
           roles: ["admin", "entry", "report"]
         }
+        {
+          name: "SuperAdmin"
+          email: "superadmin@gmail.com"
+          password: "foobar"
+          roles: ["admin", "entry", "report"]
+        }
       ]
       _.each users, (user) ->
         id = Accounts.createUser
@@ -63,23 +69,25 @@ Meteor.startup ->
           Roles.addUsersToRoles id, ["entry", "report"], 'UnitB'
         if user.name is "Admin2"
           Roles.addUsersToRoles id, user.roles, 'UnitC'
+        if user.name is "SuperAdmin"
+          Roles.addUsersToRoles id, user.roles, 'Super'
 
     if Residents.find().count() is 0
       Residents.insert
         name: "Jim"
-        facility: "UnitA"
+        unit: "UnitA"
       Residents.insert
         name: "jeff"
-        facility: "UnitB"
+        unit: "UnitB"
       Residents.insert
         name: "mary"
-        facility: "UnitA"
+        unit: "UnitA"
       Residents.insert
         name: "sally"
-        facility: "UnitB"
+        unit: "UnitB"
       Residents.insert
         name: "biff"
-        facility: "UnitC"
+        unit: "UnitC"
       Residents.insert
         name: "marty"
-        facility: "UnitC"
+        unit: "UnitC"

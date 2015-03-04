@@ -7,9 +7,10 @@
 
   {{> hello}}
   {{> loginButtons}}
+  {{#if isInRole 'admin,entry,report'}}
   {{> residents}}
 
-  {{#if isInRole 'admin,entry,report' 'allFac'}}
+<!--   {{#if isInRole 'admin,entry,report' 'allFac'}}
     {{>All}}
 
   {{else}}
@@ -22,7 +23,7 @@
 
       {{/if}}
     {{/if}}
-  {{/if}}
+  {{/if}} -->
 
 
 </body>
@@ -35,12 +36,14 @@
 <template name="residents">
   {{#each allResidents}}
     <p>
-      {{name}}
+      name: {{name}}
+      <br>
+      unit: {{unit}}
     </p>
   {{/each}}
 </template>
 
-<template name="facA">
+<!-- <template name="facA">
   <h3>Fac A can see this</h3>
   {{#if isInRole 'admin' 'facA'}}
     <p> only the admins can see this</p>
@@ -75,8 +78,8 @@
     <p> only the admins in FacA can see this</p>
   {{/if}}
 
-  {{#if isInRole 'admin' 'facB'}}
-  <!-- matt isn't an admin in Fac B -->
+  {{#if isInRole 'admin' 'facB'}} -->
+  <!-- matt isn't an admin in Fac B
     <p> only the admins in FacB can see this</p>
   {{/if}}
 
@@ -95,4 +98,4 @@
   {{#if isInRole 'report' 'facB'}}
     <p> only people with report abilities in FacB can see this</p>
   {{/if}}
-</template>
+</template> -->
